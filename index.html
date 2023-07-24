@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: #212121;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            width:600px;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="check">Lorem ipsum dolor sit amet consectetur adipisicing elit Quam porro dolor eos odit inventore officiis excepturi pariatur accusamus voluptate eveniet consectetur dolorem cum! Dolorem quos doloribus vitae Porro eveniet impedit hic eligendi numquam eius minus ratione a dolor repellendus expedita quaerat temporibus voluptate, voluptates recusandae, unde deleniti. Unde quia temporibus quas Recusandae totam laborum quasi perspiciatis adipisci voluptatem fugiat maiores officia facere Alias quisquam officiis accusantium. Magnam autem quae accusamus quos, atque veniam tempore exercitationem voluptate aperiam laudantium facilis dolore nobis aspernatur sint similique facere ex harum rerum a, itaque labore nemo saepe. Reiciendis odio eveniet dolore aperiam quia aliquam?</p>
+    </div>
+    <div>
+        <textarea name="" id="wrt" cols="50" rows="20"></textarea>
+        <button class="refresh">Refresh</button>
+        <p class="display"></p>
+    </div>
+    <div>
+        <h1 class="time"></h1>
+        <h2 class="correct"></h2>
+    </div>
+</body>
+<script>
+    const btn=document.querySelector(".refresh")
+    const inp=document.querySelector("#wrt")
+    const disp=document.querySelector(".display")
+    let checkWith=document.querySelector(".check")
+    checkWith.innerText=checkWith.innerText.toLowerCase()
+
+    let count=0
+    let pos=-1
+    let words=0
+    let initial=0
+    let ans=""
+    let timer=90
+
+    btn.addEventListener("click",function (){
+        inp.value=""
+        disp.innerText=""
+        pos=-1
+        words=0
+        count=0
+        ans=""
+        timer=90
+    })
+
+    inp.addEventListener("keydown",function (e){
+        if(e.key !== "Backspace")
+        {
+            if(e.key === ' ')
+            {
+                disp.textContent+=" "
+                pos=disp.textContent.substring(0,count) === checkWith.textContent.substring(0,count) ? disp.textContent.lastIndexOf(" "):pos
+                if(pos!=-1)
+                    ans=disp.textContent.substring(0,pos)
+            }
+            else
+            {
+                disp.textContent+=e.key
+                if(disp.textContent[count] === checkWith.textContent[count])
+                {
+                    console.log("G")
+                }
+                else
+                {
+                    console.log("R")
+                }
+            }
+            count=count+1
+        }
+        else
+        {
+            if(count === pos)
+            {
+                e.preventDefault()
+            }
+            else
+            {
+            disp.textContent=disp.textContent.substring(0,count-1)
+            count=count-1
+            }
+        }
+    })
+
+    let clearid=setInterval(()=>{
+        document.querySelector(".time").innerText=timer
+        timer=timer-1
+
+        if(timer === 0)
+        {
+            document.querySelector(".time").innerText=timer
+            clearTimeout(clearid)
+            document.querySelector(".correct").innerText=ans.split(" ").length
+            btn.click()
+        }
+    },1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
