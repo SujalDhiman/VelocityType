@@ -9,25 +9,13 @@
         {
             background-color: #212121;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        body div{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-            width:600px;
-            border: 2px solid white;
         }
     </style>
 </head>
 <body>
-    <div>
-        <p class="check">Lorem ipsum dolor sit amet consectetur adipisicing elit Quam porro dolor eos odit inventore officiis excepturi pariatur accusamus voluptate eveniet consectetur dolorem cum! Dolorem quos doloribus vitae Porro eveniet impedit hic eligendi numquam eius minus ratione a dolor repellendus expedita quaerat temporibus voluptate, voluptates recusandae, unde deleniti. Unde quia temporibus quas Recusandae totam laborum quasi perspiciatis adipisci voluptatem fugiat maiores officia facere Alias quisquam officiis accusantium. Magnam autem quae accusamus quos, atque veniam tempore exercitationem voluptate aperiam laudantium facilis dolore nobis aspernatur sint similique facere ex harum rerum a, itaque labore nemo saepe. Reiciendis odio eveniet dolore aperiam quia aliquam?</p>
+    <div class="generate">
     </div>
+    <button class="generateText">generate text</button>
     <div>
         <textarea name="" id="wrt" cols="50" rows="20"></textarea>
         <button class="refresh">Refresh</button>
@@ -39,27 +27,42 @@
     </div>
 </body>
 <script>
+
+    const generateButton=document.querySelector(".generateText")
+    const addText=document.querySelector(".generate")
+    let sampleText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam quam corrupti non quidem assumenda exercitationem ipsum aliquid magni?"
+
+    generateButton.addEventListener("click",()=>{
+        sampleText=sampleText.toLowerCase()
+
+        for(let i=0;i<sampleText.length;i++)
+        {
+            const span=document.createElement("span")
+            span.innerText=sampleText[i]
+            addText.append(span)
+        }
+    })
     const btn=document.querySelector(".refresh")
     const inp=document.querySelector("#wrt")
     const disp=document.querySelector(".display")
-    let checkWith=document.querySelector(".check")
-    checkWith.innerText=checkWith.innerText.toLowerCase()
 
     let count=0
     let pos=-1
     let words=0
     let initial=0
     let ans=""
-    let timer=90
+    let timer=9000
 
     btn.addEventListener("click",function (){
         inp.value=""
-        disp.innerText=""
+        addText.innerText=""
         pos=-1
         words=0
         count=0
         ans=""
-        timer=90
+        timer=9000
+        disp.innerText=""
+
     })
 
     inp.addEventListener("keydown",function (e){
@@ -68,20 +71,22 @@
             if(e.key === ' ')
             {
                 disp.textContent+=" "
-                pos=disp.textContent.substring(0,count) === checkWith.textContent.substring(0,count) ? disp.textContent.lastIndexOf(" "):pos
+                pos=disp.textContent.substring(0,count) === sampleText.substring(0,count) ? count:pos
                 if(pos!=-1)
                     ans=disp.textContent.substring(0,pos)
             }
             else
             {
                 disp.textContent+=e.key
-                if(disp.textContent[count] === checkWith.textContent[count])
+                if(disp.textContent[count] === sampleText[count])
                 {
-                    console.log("G")
+                    console.log(disp.textContent[count],sampleText[count])
+                    addText.children[count].style.color="green"
                 }
                 else
                 {
-                    console.log("R")
+                    console.log(disp.textContent[count],sampleText[count])
+                    addText.children[count].style.color="red"
                 }
             }
             count=count+1
@@ -94,16 +99,15 @@
             }
             else
             {
-            disp.textContent=disp.textContent.substring(0,count-1)
-            count=count-1
+                disp.textContent=disp.textContent.substring(0,count-1)
+                count=count-1
+                addText.children[count].style.color="white"
             }
         }
-    })
-
+    })    
     let clearid=setInterval(()=>{
         document.querySelector(".time").innerText=timer
         timer=timer-1
-
         if(timer === 0)
         {
             document.querySelector(".time").innerText=timer
@@ -112,18 +116,5 @@
             btn.click()
         }
     },1000)
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 </html>
