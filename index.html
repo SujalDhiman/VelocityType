@@ -63,20 +63,32 @@
         timer=9000
         disp.innerText=""
 
-    })
-
+    })                           
     inp.addEventListener("keydown",function (e){
-        if(e.key !== "Backspace")
+        if(e.key === "Control" || e.key === "Alt" || e.key === "CapsLock"){
+            e.preventDefault()
+            alert("Keys locked")
+        }
+
+        else if(e.key !== "Backspace")
         {
             if(e.key === ' ')
             {
                 disp.textContent+=" "
+                inp.value=""
+                inp.value=disp.textContent
                 pos=disp.textContent.substring(0,count) === sampleText.substring(0,count) ? count:pos
                 if(pos!=-1)
                     ans=disp.textContent.substring(0,pos)
+                count=count+1
             }
             else
             {
+                if(e.key === "Shift")
+                {
+                    e.preventDefault()
+                }
+                else{
                 disp.textContent+=e.key
                 if(disp.textContent[count] === sampleText[count])
                 {
@@ -88,8 +100,10 @@
                     console.log(disp.textContent[count],sampleText[count])
                     addText.children[count].style.color="red"
                 }
+                count=count+1
+                }
             }
-            count=count+1
+            console.log(count)
         }
         else
         {
@@ -101,8 +115,10 @@
             {
                 disp.textContent=disp.textContent.substring(0,count-1)
                 count=count-1
+                if(count <=-1) count=0
                 addText.children[count].style.color="white"
             }
+            console.log(count)
         }
     })    
     let clearid=setInterval(()=>{
@@ -118,3 +134,8 @@
     },1000)
 </script>
 </html>
+
+
+
+
+
