@@ -1,141 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body
-        {
-            background-color: #212121;
-            color: white;
-        }
+      body {
+        background-color: #212121;
+        color: white;
+      }
+      .display {
+        color: #f1e7e7;
+      }
     </style>
-</head>
-<body>
-    <div class="generate">
-    </div>
+  </head>
+  <body>
+    <div class="generate"></div>
     <button class="generateText">generate text</button>
     <div>
-        <textarea name="" id="wrt" cols="50" rows="20"></textarea>
-        <button class="refresh">Refresh</button>
-        <p class="display"></p>
+      <textarea
+        name=""
+        id="wrt"
+        cols="50"
+        rows="20"
+        placeholder="type here"
+      ></textarea>
+      <button class="refresh">Refresh</button>
+      <p class="display"></p>
     </div>
     <div>
-        <h1 class="time"></h1>
-        <h2 class="correct"></h2>
+      <h1 class="time"></h1>
+      <h2 class="correct"></h2>
     </div>
-</body>
-<script>
+  </body>
+  <script>
+    const generateButton = document.querySelector(".generateText");
+    const addText = document.querySelector(".generate");
+    let sampleText =
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam quam corrupti non quidem assumenda exercitationem ipsum aliquid magni?";
 
-    const generateButton=document.querySelector(".generateText")
-    const addText=document.querySelector(".generate")
-    let sampleText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam quam corrupti non quidem assumenda exercitationem ipsum aliquid magni?"
+    generateButton.addEventListener("click", () => {
+      sampleText = sampleText.toLowerCase();
 
-    generateButton.addEventListener("click",()=>{
-        sampleText=sampleText.toLowerCase()
+      for (let i = 0; i < sampleText.length; i++) {
+        const span = document.createElement("span");
+        span.innerText = sampleText[i];
+        addText.append(span);
+      }
+    });
+    const btn = document.querySelector(".refresh");
+    const inp = document.querySelector("#wrt");
+    const disp = document.querySelector(".display");
 
-        for(let i=0;i<sampleText.length;i++)
-        {
-            const span=document.createElement("span")
-            span.innerText=sampleText[i]
-            addText.append(span)
-        }
-    })
-    const btn=document.querySelector(".refresh")
-    const inp=document.querySelector("#wrt")
-    const disp=document.querySelector(".display")
+    let count = 0;
+    let pos = -1;
+    let words = 0;
+    let initial = 0;
+    let ans = "";
+    let timer = 9000;
 
-    let count=0
-    let pos=-1
-    let words=0
-    let initial=0
-    let ans=""
-    let timer=9000
-
-    btn.addEventListener("click",function (){
-        inp.value=""
-        addText.innerText=""
-        pos=-1
-        words=0
-        count=0
-        ans=""
-        timer=9000
-        disp.innerText=""
-
-    })                           
-    inp.addEventListener("keydown",function (e){
-        if(e.key === "Control" || e.key === "Alt" || e.key === "CapsLock"){
-            e.preventDefault()
-            alert("Keys locked")
-        }
-
-        else if(e.key !== "Backspace")
-        {
-            if(e.key === ' ')
-            {
-                disp.textContent+=" "
-                inp.value=""
-                inp.value=disp.textContent
-                pos=disp.textContent.substring(0,count) === sampleText.substring(0,count) ? count:pos
-                if(pos!=-1)
-                    ans=disp.textContent.substring(0,pos)
-                count=count+1
+    btn.addEventListener("click", function () {
+      inp.value = "";
+      addText.innerText = "";
+      pos = -1;
+      words = 0;
+      count = 0;
+      ans = "";
+      timer = 9000;
+      disp.innerText = "";
+    });
+    inp.addEventListener("keydown", function (e) {
+      if (e.key === "Control" || e.key === "Alt" || e.key === "CapsLock" || e.key === "Tab") {
+        e.preventDefault();
+        alert("Keys locked");
+      }
+       else if (e.key !== "Backspace") {
+        if (e.key === " ") {
+          disp.textContent += " ";
+          pos =
+            disp.textContent.substring(0, count) ===
+            sampleText.substring(0, count)
+              ? count
+              : pos;
+          if (pos != -1) ans = disp.textContent.substring(0, pos);
+          count = count + 1;
+        } else {
+          if (e.key === "Shift") {
+            e.preventDefault();
+          } else {
+            disp.textContent += e.key;
+            if (disp.textContent[count] === sampleText[count]) {
+              console.log(disp.textContent[count], sampleText[count]);
+              addText.children[count].style.color = "green";
+            } else {
+              console.log(disp.textContent[count], sampleText[count]);
+              addText.children[count].style.color = "red";
             }
-            else
-            {
-                if(e.key === "Shift")
-                {
-                    e.preventDefault()
-                }
-                else{
-                disp.textContent+=e.key
-                if(disp.textContent[count] === sampleText[count])
-                {
-                    console.log(disp.textContent[count],sampleText[count])
-                    addText.children[count].style.color="green"
-                }
-                else
-                {
-                    console.log(disp.textContent[count],sampleText[count])
-                    addText.children[count].style.color="red"
-                }
-                count=count+1
-                }
-            }
-            console.log(count)
+            count = count + 1;
+          }
         }
-        else
-        {
-            if(count === pos)
-            {
-                e.preventDefault()
-            }
-            else
-            {
-                disp.textContent=disp.textContent.substring(0,count-1)
-                count=count-1
-                if(count <=-1) count=0
-                addText.children[count].style.color="white"
-            }
-            console.log(count)
+        console.log(count);
+      } else {
+        if (count === pos) {
+          e.preventDefault();
+        } else {
+          disp.textContent = disp.textContent.substring(0, count - 1);
+          count = count - 1;
+          if (count <= -1) count = 0;
+          addText.children[count].style.color = "white";
         }
-    })    
-    let clearid=setInterval(()=>{
-        document.querySelector(".time").innerText=timer
-        timer=timer-1
-        if(timer === 0)
-        {
-            document.querySelector(".time").innerText=timer
-            clearTimeout(clearid)
-            document.querySelector(".correct").innerText=ans.split(" ").length
-            btn.click()
-        }
-    },1000)
-</script>
+        console.log(count);
+      }
+    });
+    let clearid = setInterval(() => {
+      document.querySelector(".time").innerText = timer;
+      timer = timer - 1;
+      if (timer === 0) {
+        document.querySelector(".time").innerText = timer;
+        clearTimeout(clearid);
+        document.querySelector(".correct").innerText = ans.split(" ").length;
+        btn.click();
+      }
+    }, 1000);
+  </script>
 </html>
-
-
-
-
-
