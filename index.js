@@ -38,7 +38,7 @@ generateButton.addEventListener("click",function ()
         keycheck.classList.add("wrt")
     }
     const addText = document.querySelector(".generate");
-    let sampleText ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam quam corrupti non quidem assumenda exercitationem ipsum aliquid magni?";
+    let sampleText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem suscipit eligendi culpa velit enim, assumenda consectetur, necessitatibus reprehenderit exercitationem reiciendis possimus vero voluptates est pariatur nobis placeat deleniti? Nihil, eaque.Voluptate illo nostrum numquam necessitatibus dolore ipsa, deleniti repellendus dolores corporis! Velit nostrum illum voluptate, laborum placeat eaque ut laboriosam temporibus. Quo debitis, incidunt iusto nostrum vitae est ullam praesentium dolorem vero eius, quis quidem officiis sapiente numquam ut ex, quae neque recusandae alias veritatis dignissimos voluptatibus aliquid! Commodi, ducimus numquam magni ab, nostrum omnis minus, temporibus voluptates dignissimos laboriosam cumque eveniet esse cum? "
     sampleText=sampleText.toLowerCase()
 
     const timerDisplay=document.querySelector(".timer")
@@ -67,7 +67,7 @@ generateButton.addEventListener("click",function ()
 
     refresh.addEventListener("click", function () {
     inp.value = "";
-    addText.innerText = "";
+    addText.innerText ="Sample text here ... Crazy ! I was crazy once ..."
     pos = -1;
     words = 0;
     count = 0;
@@ -76,6 +76,8 @@ generateButton.addEventListener("click",function ()
     disp.innerText = "";
     keycheck.classList.remove("wrt")
     keycheck.classList.add("keycheck")
+    clearInterval(id)
+    timerDisplay.style.visibility="hidden"
     });
 
     const id=setInterval(()=>{
