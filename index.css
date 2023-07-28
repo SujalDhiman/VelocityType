@@ -1,6 +1,6 @@
 body 
 {
-    background-color: #212121;
+    background: linear-gradient(180deg, #070008 0%, #9C05B5 53.13%, #080009 100%);
     color: white;
     overflow-x: hidden;
 }
@@ -8,7 +8,16 @@ body
 .hero-section{
     width:100%;
     height:60px;
-    border: 2px solid white;
+    position: relative;
+    top:0px;
+    display: flex;
+    align-items: center;
+}
+.hero-section p{
+    font-size:50px;
+    top:0px;
+    font-weight: 900;
+    font-family: 'Goblin One', cursive;
 }
 
 .btn-section
@@ -17,7 +26,6 @@ body
     display: flex;
     width:100%;
     height:60px;
-    border:2px solid white;
     align-items: center;
 }
 
@@ -30,9 +38,9 @@ body
 
 .checkSection
 {
-    margin-top: 5px;
+    margin-top: 30px;
     position: relative;
-    left:19%;
+    left:15%;
 }
 
 .display 
@@ -45,42 +53,54 @@ body
 {
     height:50px;
     width:50px;
-    border: 2px solid white;
     text-align: center;
     padding-top:13px;
     box-sizing: border-box;
     margin-left:3%;
     visibility: hidden;
+    font-size: 25px;
+    font-weight: 900;   
 }
 
 .generateText
 {
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 52px;
     text-align: center;
-    font-size: 0.8rem;
-    font-weight: 300;   
-    margin-left: 50%;
+    font-size: 17px;
+    font-weight: 900;
+    margin-left: 45%;
+    border-radius: 9px;
+    border: 1px solid #831B85;
+    background: linear-gradient(180deg, #42024C 0%, rgba(226, 223, 226, 0.00) 100%);
+    color: #ffffff;
+}
+
+.generateText:hover{
+    cursor: pointer;
 }
 
 .generate
 {
     height:250px;
     width:800px;
-    border: 2px solid white;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 600;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding:15px 15px;
+    box-sizing: border-box;
 }
 
 .keyboard
 {
     width:600px;
     height:250px;
-    border: 2px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    color: #000000;
 }
 
 .upperKeys button,.midKeys button, .endKeys button
@@ -88,8 +108,8 @@ body
     height: 50px;
     width:50px;
     border: 2px solid white;
-    background-color: #212121;
-    color: white;
+    background-color: #D9D9D9;
+    color: #000000;
     font-weight: 600;
 
 }
@@ -98,8 +118,8 @@ body
 {
     width: 265px;
     height:50px;
-    background-color: #212121;
-    color: white;
+    background-color: #D9D9D9;
+    color: #000000;
     font-weight: 600;
     border: 2px solid white;
 } 
@@ -111,7 +131,11 @@ textarea
     border: none;
     font-size: 20px;
     font-weight: 400;
+    padding: 10px 15px;
+    box-sizing: border-box;
 }
+
+
 
 .refresh
 {
@@ -120,5 +144,20 @@ textarea
     position: relative;
     left:50%;
     visibility: hidden;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    position: relative;
+    top:40px;
 }
 
+.refresh:hover
+{
+    cursor: pointer;
+}
+
+.footer
+{
+    position: relative;
+    top:0px;
+}
