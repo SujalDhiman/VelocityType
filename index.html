@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c7fde88d69.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="hero-section">
-        <h2>Velocity Type</h2>
+        <p>Velocity Type</p>
     </div>
 
     <div class="btn-section">
-        <div class="timer"></div>
+        <div class="timer">00</div>
         <button class="generateText">Generate Text</button>
     </div>
     
@@ -58,12 +62,12 @@
     </div>
 
     <div class="checkSection">
-        <textarea name="" class="keycheck" cols="80" rows="12" placeholder="Start Typing Here"></textarea>
+        <textarea name="" class="keycheck" cols="80" rows="10" placeholder="Start Typing Here"></textarea>
     </div>
 
     <p class="display"></p>
-    <div>
-        <button class="refresh">Refresh</button>
+    <div class="footer">
+        <button class="refresh"><i class="fa-solid fa-arrow-rotate-right fa-2xl" style="color: #fafafa;"></i></button>
         <button style="visibility: hidden;" ><a  class="submit" href="./result/result.html">CLICK</a></button>
     </div>
     <script src="./index.js"></script>
