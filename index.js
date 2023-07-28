@@ -1,6 +1,7 @@
 let initialPage=true
 const submit=document.querySelector(".submit")
 
+
 // submit.addEventListener("click",function (){
 //     console.log("Hell")
 // })
@@ -8,6 +9,7 @@ const submit=document.querySelector(".submit")
 if(initialPage)
 {
     const keycheck=document.querySelector(".keycheck")
+    keycheck.focus()
     keycheck.setAttribute("placeholder","Check Your Keyboard ... ")
     const keyboard=document.querySelector(".keyboard")
     keycheck.addEventListener("keydown",function(e){
@@ -17,12 +19,14 @@ if(initialPage)
             const keyboardButton=keyboard.querySelector(`.${find}`)
             if(keyboardButton !== null)
             {
-                keyboardButton.style.color="green"
+                keyboardButton.style.color="white"
                 keyboardButton.style.borderColor="green"
+                keyboardButton.style.backgroundColor="green"
                 keycheck.addEventListener("keyup",function (e){
                     e.stopPropagation()
-                    keyboardButton.style.color="white"
+                    keyboardButton.style.color="black"
                     keyboardButton.style.borderColor="white"
+                    keyboardButton.style.backgroundColor="#D9D9D9"
                 })
             }
         }})
@@ -43,7 +47,7 @@ generateButton.addEventListener("click",function ()
         keycheck.classList.add("wrt")
     }
     const addText = document.querySelector(".generate");
-    let sampleText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem suscipit eligendi culpa velit enim, assumenda consectetur, necessitatibus reprehenderit exercitationem reiciendis possimus vero voluptates est pariatur nobis placeat deleniti? Nihil, eaque.Voluptate illo nostrum numquam necessitatibus dolore ipsa, deleniti repellendus dolores corporis! Velit nostrum illum voluptate, laborum placeat eaque ut laboriosam temporibus. Quo debitis, incidunt iusto nostrum vitae est ullam praesentium dolorem vero eius, quis quidem officiis sapiente numquam ut ex, quae neque recusandae alias veritatis dignissimos voluptatibus aliquid! Commodi, ducimus numquam magni ab, nostrum omnis minus, temporibus voluptates dignissimos laboriosam cumque eveniet esse cum? "
+    let sampleText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem suscipit eligendi culpa velit enim, assumenda consectetur, necessitatibus reprehenderit exercitationem reiciendis possimus vero voluptates est pariatur nobis placeat deleniti? Nihil, eaque.Voluptate illo nostrum numquam necessitatibus dolore ipsa, deleniti repellendus dolores corporis! Velit nostrum illum voluptate, laborum placeat eaque ut laboriosam temporibus. "
     sampleText=sampleText.toLowerCase()
 
     const timerDisplay=document.querySelector(".timer")
@@ -68,7 +72,7 @@ generateButton.addEventListener("click",function ()
     let words = 0;
     let initial = 0;
     let ans = "";
-    let timer = 10;
+    let timer = 30;
     localStorage.setItem("time",timer)
 
     refresh.addEventListener("click", function () {
@@ -78,7 +82,7 @@ generateButton.addEventListener("click",function ()
     words = 0;
     count = 0;
     ans = "";
-    timer = 10;
+    timer = 30;
     disp.innerText = "";
     keycheck.classList.remove("wrt")
     keycheck.classList.add("keycheck")
