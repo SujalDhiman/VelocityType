@@ -1,4 +1,9 @@
 let initialPage=true
+const submit=document.querySelector(".submit")
+
+// submit.addEventListener("click",function (){
+//     console.log("Hell")
+// })
 
 if(initialPage)
 {
@@ -63,7 +68,8 @@ generateButton.addEventListener("click",function ()
     let words = 0;
     let initial = 0;
     let ans = "";
-    let timer = 30;
+    let timer = 10;
+    localStorage.setItem("time",timer)
 
     refresh.addEventListener("click", function () {
     inp.value = "";
@@ -72,21 +78,24 @@ generateButton.addEventListener("click",function ()
     words = 0;
     count = 0;
     ans = "";
-    timer = 30;
+    timer = 10;
     disp.innerText = "";
     keycheck.classList.remove("wrt")
     keycheck.classList.add("keycheck")
     clearInterval(id)
     timerDisplay.style.visibility="hidden"
+    localStorage.clear()
     });
 
     const id=setInterval(()=>{
         if(timer === 0)
         {
             timerDisplay.innerText=timer
-            console.log(ans.split(" ").length)
+            console.log(ans.split(" ").length,ans)
             inp.blur()
-            refresh.click()
+            localStorage.setItem("writtenText",ans)
+            localStorage.setItem("actualText",sampleText)
+            submit.click()
             clearInterval(id)
         }
         else
@@ -111,7 +120,7 @@ generateButton.addEventListener("click",function ()
             disp.textContent += " ";
             pos =disp.textContent.substring(0, count) ===sampleText.substring(0, count)? count: pos;
         if (pos != -1){
-            ans = disp.textContent.substring(0, pos);
+            ans = disp.textContent.substring(0, count);
         }
         count = count + 1;
         } 
@@ -149,106 +158,3 @@ generateButton.addEventListener("click",function ()
     });
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // generateButton.addEventListener("click", () =>{
-    // inp.focus()
-    // sampleText = sampleText.toLowerCase();
-
-    // addText.innerText=""
-    // for (let i = 0; i < sampleText.length; i++) {
-    //     const span = document.createElement("span");
-    //     span.innerText = sampleText[i];
-    //     addText.append(span);
-    // }
-    // });
-    // const btn = document.querySelector(".refresh");
-    // const inp = document.querySelector(".wrt");
-    // const disp = document.querySelector(".display");
-
-    // let count = 0;
-    // let pos = -1;
-    // let words = 0;
-    // let initial = 0;
-    // let ans = "";
-    // let timer = 9000;
-
-    // btn.addEventListener("click", function () {
-    // inp.value = "";
-    // addText.innerText = "";
-    // pos = -1;
-    // words = 0;
-    // count = 0;
-    // ans = "";
-    // timer = 9000;
-    // disp.innerText = "";
-    // });
-    // inp.addEventListener("keydown", function (e) {
-    // if(count > addText.innerText.length)
-    // {
-    //     btn.click()  //after button click automatic results
-    // }
-    // if (e.key === "Control" || e.key === "Alt" || e.key === "CapsLock" || e.key === "Tab") {
-    //     e.preventDefault();
-    //     alert("Keys locked");
-    // }
-    // else if (e.key !== "Backspace") {
-    //     if (e.key === " ") {
-    //     disp.textContent += " ";
-    //     pos =disp.textContent.substring(0, count) ===sampleText.substring(0, count)? count: pos;
-    //     if (pos != -1) ans = disp.textContent.substring(0, pos);
-    //     count = count + 1;
-    //     } 
-    //     else {
-    //     if (e.key === "Shift") {
-    //         e.preventDefault();
-    //     } 
-    //     else {
-    //         disp.textContent += e.key;
-    //         if (disp.textContent[count] === sampleText[count]) {
-    //         addText.children[count].style.color = "green";
-    //         } 
-    //         else {
-    //         addText.children[count].style.color = "red";
-    //         }
-    //         count = count + 1;
-    //     }
-    //     }
-    //     } 
-    //     else {
-    //     if (count === pos) {
-    //     e.preventDefault();
-    //     } 
-    //     else {
-    //     disp.textContent = disp.textContent.substring(0, count - 1);
-    //     count = count - 1;
-    //     if (count <= -1) count = 0;
-    //     addText.children[count].style.color = "white";
-    //     }
-    // }
-    // });
-    // // let clearid = setInterval(() => {
-    // // document.querySelector(".time").innerText = timer;
-    // // timer = timer - 1;
-    // // if(timer === 0) {
-    // //     document.querySelector(".time").innerText = timer;
-    // //     clearTimeout(clearid);
-    // //     document.querySelector(".correct").innerText = ans.split(" ").length;
-    // //     btn.click();
-    // // }
-    // // }, 1000);
