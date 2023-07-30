@@ -75,6 +75,8 @@ generateButton.addEventListener("click",function ()
     let timer = 30;
     localStorage.setItem("time",timer)
 
+    //refresh logic goes here
+    
     refresh.addEventListener("click", function () {
     inp.value = "";
     addText.innerText ="Sample text here ... Crazy ! I was crazy once ..."
