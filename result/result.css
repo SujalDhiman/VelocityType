@@ -1,6 +1,6 @@
 body
 {
-    background-color: #212121;
+    background: linear-gradient(180deg, #070008 0%, #9C05B5 53.13%, #080009 100%);
     color: white;
     display: flex;
     flex-direction: column;
@@ -12,14 +12,12 @@ body
 {
     height: 100px;
     width:100%;
-    border: 2px solid white;
 }
 
 .mid
 {
     height:350px;
     width:60%;
-    border: 2px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,9 +33,13 @@ body
     margin-left: 40px;
 }
 
-.wpm
+.wpm , .acc, .characters, .time
 {
-    margin-left:-42%;
+    color: rgba(194, 190, 190, 1)
+}
+
+.wpmVal, .accVal, .timeVal, .charVal{
+    color: rgba(251, 7, 212, 1)
 }
 
 .footer
@@ -46,16 +48,4 @@ body
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
-
-.characters,.acc,.time{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.characters
-{
-    position: relative;
-    top:0px;
 }
