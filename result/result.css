@@ -59,6 +59,11 @@ body
     justify-content: space-between;
 }
 
+A {
+    text-decoration: none;
+    color: white;
+}
+
 .refresh{
     background-color: transparent;
     border: none;
