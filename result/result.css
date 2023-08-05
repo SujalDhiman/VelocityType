@@ -9,14 +9,20 @@ body
     box-sizing: border-box;
     width: 1540px;
     height: 797px;
-    overflow: hidden;
+    overflow: hidden;;
 }
 
 .top
 {
+    letter-spacing: 0.1em;
     font-family: 'Goblin One', cursive;
     height: 100px;
     width:100%;
+}
+
+.msg{
+    letter-spacing: 4px;
+    text-align: center;
 }
 
 .mid
@@ -24,9 +30,6 @@ body
     font-family: 'Inter', sans-serif;
     height:350px;
     width:60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .stats
@@ -34,24 +37,43 @@ body
     width:600px;
     height:150px;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
-    margin-left: 40px;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-left: 144px;
+}
+
+.wpm{
+    margin-top: 44px;
+    margin-left: 210px;
+    margin-bottom: 44px;
 }
 
 .wpm , .acc, .characters, .time
 {   
     font-family: 'Inter', sans-serif;
-    color: rgba(194, 190, 190, 1)
+    color: #C2BEBE;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; 
 }
 
 .wpmVal, .accVal, .timeVal, .charVal{
-    font-size: larger;
-    color: rgba(251, 7, 212, 1)
+    color: #FB07D4;
+    font-family: Inter;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1px; 
 }
 
 .footer
 {
+    width: 100%;
+    height: 100px;
+    letter-spacing: 0.1em;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
