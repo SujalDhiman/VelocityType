@@ -30,6 +30,8 @@ body
     font-family: 'Inter', sans-serif;
     height:350px;
     width:60%;
+    position: relative;
+    left:-5%;
 }
 
 .stats
@@ -79,6 +81,8 @@ body
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    left:-80px;
 }
 
 A {
