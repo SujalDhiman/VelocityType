@@ -36,7 +36,9 @@ const generateButton=document.querySelector(".generateText")
 generateButton.addEventListener("click",function ()
 {
     initialPage=false
-
+    
+    const addText = document.querySelector(".generate");
+    addText.focus();
     const keycheck=document.querySelector(".keycheck")
     keycheck.setAttribute("placeholder","Start Typing Here ....")
     keycheck.value=""
@@ -46,7 +48,6 @@ generateButton.addEventListener("click",function ()
         keycheck.classList.remove("keycheck")
         keycheck.classList.add("wrt")
     }
-    const addText = document.querySelector(".generate");
     let sampleText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem suscipit eligendi culpa velit enim, assumenda consectetur, necessitatibus reprehenderit exercitationem reiciendis possimus vero voluptates est pariatur nobis placeat deleniti? Nihil, eaque.Voluptate illo nostrum numquam necessitatibus dolore ipsa, deleniti repellendus dolores corporis! Velit nostrum illum voluptate, laborum placeat eaque ut laboriosam temporibus. "
     sampleText=sampleText.toLowerCase()
 
